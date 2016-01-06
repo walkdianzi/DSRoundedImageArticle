@@ -17,42 +17,47 @@ iOS图片高性能设置圆角
 所有如果要高性能的设置圆角就需要找另外的方法了。下面是我找到的一些方法
 
 ![IMG_1802.PNG](http://upload-images.jianshu.io/upload_images/101810-a4dbf287a34ed2f4.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 **设置圆角的方法**
 
 - 直接使用setCornerRadius
-      这种就是最常用的，也是最耗性能的。
+
+> 这种就是最常用的，也是最耗性能的。
 
 - setCornerRadius设置圆角之后，shouldRasterize=YES光栅化
 
-      avatarImageView.clipsToBounds = YES;
+> avatarImageView.clipsToBounds = YES;
       [avatarImageView.layer setCornerRadius:50];
       avatarImageView.layer.shouldRasterize = YES;
       
-      shouldRasterize=YES设置光栅化，可以使离屏渲染的结果缓存到内存中存为位图，
+> shouldRasterize=YES设置光栅化，可以使离屏渲染的结果缓存到内存中存为位图，
       使用的时候直接使用缓存，节省了一直离屏渲染损耗的性能。
 
-      但是如果layer及sublayers常常改变的话，它就会一直不停的渲染及删除缓存重新
+> 但是如果layer及sublayers常常改变的话，它就会一直不停的渲染及删除缓存重新
       创建缓存，所以这种情况下建议不要使用光栅化，这样也是比较损耗性能的。
 
-      问题：我发现UIImageView上加载网络图片使用光栅化会有一点模糊，而UIButton
+> 问题：我发现UIImageView上加载网络图片使用光栅化会有一点模糊，而UIButton
       上使用光栅化没有模糊，不知道为什么？求大神解答！
 
 
 - 直接覆盖一张中间为圆形透明的图片
-      这种方法就是多加了一张透明的图片，GPU计算多层的混合渲染blending也是会消耗
-      一点性能的，但比第一种方法还是好上很多的。
+
+> 这种方法就是多加了一张透明的图片，GPU计算多层的混合渲染blending也是会消耗
+     一点性能的，但比第一种方法还是好上很多的。
 
 - Core Graphics绘制圆角
-      这种方式性能最好，但是UIButton上不知道怎么绘制，可以用UIimageView添加个
+
+    > 这种方式性能最好，但是UIButton上不知道怎么绘制，可以用UIimageView添加个
       点击手势当做UIButton使用。
 
-      UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
+    > UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
       [[UIBezierPath bezierPathWithRoundedRect:avatarImageView.bounds cornerRadius:50] addClip];
       [image drawInRect:avatarImageView.bounds];
       avatarImageView.image = UIGraphicsGetImageFromCurrentImageContext();
       UIGraphicsEndImageContext();
 
-      这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
+    > 这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
       里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
       - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options isClipRound:(BOOL)isRound progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock;
       
