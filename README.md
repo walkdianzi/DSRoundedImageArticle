@@ -14,7 +14,7 @@ iOS图片高性能设置圆角
 
 ------
 
-所有如果要高性能的设置圆角就需要找另外的方法了。下面是我找到的一些方法并写了一个例子。[github源码](https://github.com/walkdianzi/DSImageViewRound/tree/master)
+所有如果要高性能的设置圆角就需要找另外的方法了。下面是我找到的一些方法
 
 ![IMG_1802.PNG](http://upload-images.jianshu.io/upload_images/101810-a4dbf287a34ed2f4.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **设置圆角的方法**
@@ -55,6 +55,7 @@ iOS图片高性能设置圆角
       这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
       里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
       - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options isClipRound:(BOOL)isRound progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock;
+      
 -------
 
 **使用Instruments的Core Animation查看性能**
