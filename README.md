@@ -23,27 +23,27 @@ iOS图片高性能设置圆角
 
 - 直接使用setCornerRadius
 
-> 这种就是最常用的，也是最耗性能的。
+    > 这种就是最常用的，也是最耗性能的。
 
 - setCornerRadius设置圆角之后，shouldRasterize=YES光栅化
 
-> avatarImageView.clipsToBounds = YES;
+    > avatarImageView.clipsToBounds = YES;
       [avatarImageView.layer setCornerRadius:50];
       avatarImageView.layer.shouldRasterize = YES;
       
-> shouldRasterize=YES设置光栅化，可以使离屏渲染的结果缓存到内存中存为位图，
+    > shouldRasterize=YES设置光栅化，可以使离屏渲染的结果缓存到内存中存为位图，
       使用的时候直接使用缓存，节省了一直离屏渲染损耗的性能。
 
-> 但是如果layer及sublayers常常改变的话，它就会一直不停的渲染及删除缓存重新
+    > 但是如果layer及sublayers常常改变的话，它就会一直不停的渲染及删除缓存重新
       创建缓存，所以这种情况下建议不要使用光栅化，这样也是比较损耗性能的。
 
-> 问题：我发现UIImageView上加载网络图片使用光栅化会有一点模糊，而UIButton
+    > 问题：我发现UIImageView上加载网络图片使用光栅化会有一点模糊，而UIButton
       上使用光栅化没有模糊，不知道为什么？求大神解答！
 
 
 - 直接覆盖一张中间为圆形透明的图片
 
-> 这种方法就是多加了一张透明的图片，GPU计算多层的混合渲染blending也是会消耗
+    > 这种方法就是多加了一张透明的图片，GPU计算多层的混合渲染blending也是会消耗
      一点性能的，但比第一种方法还是好上很多的。
 
 - Core Graphics绘制圆角
@@ -65,9 +65,11 @@ iOS图片高性能设置圆角
 
 **使用Instruments的Core Animation查看性能**
 - Color Offscreen-Rendered Yellow
+
 开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。
 
 - Color Hits Green and Misses Red
+
 如果shouldRasterize被设置成YES，对应的渲染结果会被缓存，如果图层是绿色，就表示这些缓存被复用；如果是红色就表示缓存会被重复创建，这就表示该处存在性能问题了。
 
 用Instruments测试得
