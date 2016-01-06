@@ -4,11 +4,11 @@ iOS图片高性能设置圆角
 一般我们在iOS开发的过程中设置圆角都是如下这样设置的。
 
      avatarImageView.clipsToBounds = YES;
-     [avatarImageView.layer setCornerRadius:50];
-
+     [avatarImageView.layer setCornerRadius:50];
+     
      这样设置会触发离屏渲染，比较消耗性能。比如当一个页面上有十几头像这样设置了圆角
      会明显感觉到卡顿。
-
+     
      注意：ios9.0之后对UIImageView的圆角设置做了优化，UIImageView这样设置圆角
      不会触发离屏渲染，ios9.0之前还是会触发离屏渲染。而UIButton还是都会触发离屏渲染。
 
@@ -25,7 +25,7 @@ iOS图片高性能设置圆角
 - setCornerRadius设置圆角之后，shouldRasterize=YES光栅化
 
       avatarImageView.clipsToBounds = YES;
-      [avatarImageView.layer setCornerRadius:50];
+      [avatarImageView.layer setCornerRadius:50];
       avatarImageView.layer.shouldRasterize = YES;
       
       shouldRasterize=YES设置光栅化，可以使离屏渲染的结果缓存到内存中存为位图，
@@ -47,11 +47,10 @@ iOS图片高性能设置圆角
       点击手势当做UIButton使用。
 
       UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
-      [[UIBezierPath bezierPathWithRoundedRect:avatarImageView.bounds
-                                    cornerRadius:50] addClip];
-      [image drawInRect:avatarImageView.bounds];
-      avatarImageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+      [[UIBezierPath bezierPathWithRoundedRect:avatarImageView.bounds cornerRadius:50] addClip];
+      [image drawInRect:avatarImageView.bounds];
+      avatarImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+      UIGraphicsEndImageContext();
 
       这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
       里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
