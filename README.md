@@ -51,7 +51,8 @@ iOS图片高性能设置圆角
     > 这种方式性能最好，但是UIButton上不知道怎么绘制，可以用UIimageView添加个
       点击手势当做UIButton使用。
 
-    > ```OC
+    > 
+      ```OC
       UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
       [[UIBezierPath bezierPathWithRoundedRect:avatarImageView.bounds cornerRadius:50] addClip];
       [image drawInRect:avatarImageView.bounds];
@@ -61,7 +62,6 @@ iOS图片高性能设置圆角
       
     > 这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
       里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
-      
       ```OC
       - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options isClipRound:(BOOL)isRound progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock;
       ```
