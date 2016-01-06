@@ -51,12 +51,13 @@ iOS图片高性能设置圆角
     > 这种方式性能最好，但是UIButton上不知道怎么绘制，可以用UIimageView添加个
       点击手势当做UIButton使用。
 
-    > UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
+    > ```OC
+      UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
       [[UIBezierPath bezierPathWithRoundedRect:avatarImageView.bounds cornerRadius:50] addClip];
       [image drawInRect:avatarImageView.bounds];
       avatarImageView.image = UIGraphicsGetImageFromCurrentImageContext();
       UIGraphicsEndImageContext();
-
+      ```
     > 这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
       里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
       ```OC
@@ -67,11 +68,11 @@ iOS图片高性能设置圆角
 **使用Instruments的Core Animation查看性能**
 - Color Offscreen-Rendered Yellow
 
-开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。
+    > 开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。
 
 - Color Hits Green and Misses Red
 
-如果shouldRasterize被设置成YES，对应的渲染结果会被缓存，如果图层是绿色，就表示这些缓存被复用；如果是红色就表示缓存会被重复创建，这就表示该处存在性能问题了。
+    > 如果shouldRasterize被设置成YES，对应的渲染结果会被缓存，如果图层是绿色，就表示这些缓存被复用；如果是红色就表示缓存会被重复创建，这就表示该处存在性能问题了。
 
 用Instruments测试得
 - 第一种方法，ios9.0之前UIImageView和UIButton都高亮为黄色。ios9.0之后只有UIButton高亮为黄色。
