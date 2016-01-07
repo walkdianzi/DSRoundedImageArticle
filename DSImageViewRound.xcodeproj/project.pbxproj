@@ -38,6 +38,8 @@
 		1367BC781C3CF31F00E0716B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1367BC681C3CF31F00E0716B /* UIView+WebCacheOperation.m */; };
 		1367BC7C1C3D04C400E0716B /* RoundImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1367BC7B1C3D04C400E0716B /* RoundImageView.m */; };
 		1367BC7F1C3D053600E0716B /* RoundImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1367BC7E1C3D053600E0716B /* RoundImageButton.m */; };
+		13D294AD1C3DFB52000E6376 /* RoundFiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294AC1C3DFB52000E6376 /* RoundFiveDemoViewController.m */; };
+		13D294B01C3DFCC2000E6376 /* RoundSixDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294AF1C3DFCC2000E6376 /* RoundSixDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,10 @@
 		1367BC7B1C3D04C400E0716B /* RoundImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundImageView.m; sourceTree = "<group>"; };
 		1367BC7D1C3D053600E0716B /* RoundImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundImageButton.h; sourceTree = "<group>"; };
 		1367BC7E1C3D053600E0716B /* RoundImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundImageButton.m; sourceTree = "<group>"; };
+		13D294AB1C3DFB52000E6376 /* RoundFiveDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundFiveDemoViewController.h; sourceTree = "<group>"; };
+		13D294AC1C3DFB52000E6376 /* RoundFiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundFiveDemoViewController.m; sourceTree = "<group>"; };
+		13D294AE1C3DFCC2000E6376 /* RoundSixDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundSixDemoViewController.h; sourceTree = "<group>"; };
+		13D294AF1C3DFCC2000E6376 /* RoundSixDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundSixDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +232,10 @@
 				1367BC411C3CEECB00E0716B /* RoundThreeDemoViewController.m */,
 				1367BC431C3CEEDC00E0716B /* RoundFourDemoViewController.h */,
 				1367BC441C3CEEDC00E0716B /* RoundFourDemoViewController.m */,
+				13D294AB1C3DFB52000E6376 /* RoundFiveDemoViewController.h */,
+				13D294AC1C3DFB52000E6376 /* RoundFiveDemoViewController.m */,
+				13D294AE1C3DFCC2000E6376 /* RoundSixDemoViewController.h */,
+				13D294AF1C3DFCC2000E6376 /* RoundSixDemoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -421,6 +431,7 @@
 			files = (
 				1367BC6D1C3CF31F00E0716B /* SDWebImageDecoder.m in Sources */,
 				1367BC701C3CF31F00E0716B /* SDWebImageManager.m in Sources */,
+				13D294AD1C3DFB52000E6376 /* RoundFiveDemoViewController.m in Sources */,
 				1367BC6A1C3CF31F00E0716B /* NSData+ImageContentType.m in Sources */,
 				1367BC6C1C3CF31F00E0716B /* SDWebImageCompat.m in Sources */,
 				1367BC781C3CF31F00E0716B /* UIView+WebCacheOperation.m in Sources */,
@@ -441,6 +452,7 @@
 				1367BBF91C3CE9BC00E0716B /* main.m in Sources */,
 				1367BC7F1C3D053600E0716B /* RoundImageButton.m in Sources */,
 				1367BC3C1C3CEE8000E0716B /* RoundOneDemoViewController.m in Sources */,
+				13D294B01C3DFCC2000E6376 /* RoundSixDemoViewController.m in Sources */,
 				1367BC731C3CF31F00E0716B /* UIImage+GIF.m in Sources */,
 				1367BC6E1C3CF31F00E0716B /* SDWebImageDownloader.m in Sources */,
 				1367BC771C3CF31F00E0716B /* UIImageView+WebCache.m in Sources */,
@@ -672,6 +684,7 @@
 				1367BC231C3CE9BC00E0716B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1367BC241C3CE9BC00E0716B /* Build configuration list for PBXNativeTarget "DSImageViewRoundTests" */ = {
 			isa = XCConfigurationList;
@@ -680,6 +693,7 @@
 				1367BC261C3CE9BC00E0716B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1367BC271C3CE9BC00E0716B /* Build configuration list for PBXNativeTarget "DSImageViewRoundUITests" */ = {
 			isa = XCConfigurationList;
@@ -688,6 +702,7 @@
 				1367BC291C3CE9BC00E0716B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

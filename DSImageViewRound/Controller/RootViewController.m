@@ -15,17 +15,25 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"圆角";
     _items = @{
-               
+               @"Test":@[
+                       @"RoundFive",
+                       @"RoundSix"
+                       ],
                @"ImageViewRound":@[
                             @"RoundOne",
                             @"RoundTwo",
                             @"RoundThree",
                             @"RoundFour"
-                        ],
+                        ]
              };
     
     _itemsName = @{
                
+                   @"Test":@[
+                           @"setCornerRadius测试",
+                           @"Core Graphics绘制圆角测试"
+                           ],
+                   
                    @"ImageViewRound":@[
                            @"setCornerRadius最简单的设置圆角",
                            @"setCornerRadius设置圆角后光栅化",
