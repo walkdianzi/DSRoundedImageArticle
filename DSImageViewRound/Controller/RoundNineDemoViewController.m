@@ -1,66 +1,81 @@
 //
-//  RoundSixDemoViewController.m
+//  RoundNineDemoViewController.m
 //  DSImageViewRound
 //
-//  Created by dasheng on 16/1/7.
+//  Created by dasheng on 16/1/8.
 //  Copyright © 2016年 dasheng. All rights reserved.
 //
 
-#import "RoundSixDemoViewController.h"
+#import "RoundNineDemoViewController.h"
+#import "DSRoundImageView.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
-#import "DSRoundImageView.h"
 
-@interface RoundSixDemoViewController()
+#define kHeight 40
+
+@interface RoundNineDemoViewController()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *imageArr;
 
 @end
 
-@implementation RoundSixDemoViewController
+@implementation RoundNineDemoViewController
 
-- (void)viewDidLoad{
-    
+- (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect viewBounds = self.view.bounds;
-    UIScrollView *contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, viewBounds.size.width, viewBounds.size.height)];
-    contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 4000);
-    contentScrollView.scrollEnabled = YES;
-    [self.view addSubview:contentScrollView];
-    
-    
-    
-    /*------------------网络图片，在图片完成加载的时候绘制圆角-----------------------*/
-    
-    //TODO: 解决Core Graphics绘制圆角内存暴增问题
-    
-    
-    //封装到DSRoundImageView
-    for(int i = 0; i < 500; i++){
-        
-        int cell = i%7;
-        int row = i/7;
-        DSRoundImageView  *avatarImageViewUrl2 = [[DSRoundImageView alloc] initWithFrame:CGRectMake(cell*55, row*55, 50, 50)];
-        
-        [avatarImageViewUrl2 sd_setImageWithURL:[NSURL URLWithString:[self urlStr:i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            
-            UIGraphicsBeginImageContextWithOptions(avatarImageViewUrl2.bounds.size, NO, [UIScreen mainScreen].scale);
-            [[UIBezierPath bezierPathWithRoundedRect:avatarImageViewUrl2.bounds
-                                        cornerRadius:50] addClip];
-            [image drawInRect:avatarImageViewUrl2.bounds];
-            avatarImageViewUrl2.image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-        }];
-        [contentScrollView addSubview:avatarImageViewUrl2];
-    }
+    [self.view addSubview:self.tableView];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 500;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    NSInteger total = CGRectGetWidth(self.view.frame)/kHeight;
+    if (!cell) {
+        
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        for (int i=1; i<=total; i++) {
+            DSRoundImageView *imageView = [[DSRoundImageView alloc]initWithFrame:CGRectMake(kHeight * (i-1), 2, kHeight, kHeight)];
+            imageView.tag = i;
+            [cell.contentView addSubview:imageView];
+        }
+        
+    }
+    for (int i=1; i<=total; i++) {
+        DSRoundImageView *imageView = [cell viewWithTag:i];
+        NSURL *url = [NSURL URLWithString:[self urlStr:indexPath.row]];
+        [imageView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            imageView.image = image;
+        }];
+    }
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return kHeight+4;
+}
 
 - (NSString *)urlStr:(NSInteger)row {
     NSInteger count = self.imageArr.count;
     NSInteger index = arc4random() % count;
     return [self.imageArr objectAtIndex:index];
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64)];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
 }
 
 - (NSArray *)imageArr {
@@ -146,8 +161,7 @@
                       @"http://pic.meizitu.com/wp-content/uploads/2015a/11/20/07.jpg",
                       @"http://pic.meizitu.com/wp-content/uploads/2015a/11/20/08.jpg",
                       @"http://pic.meizitu.com/wp-content/uploads/2015a/11/20/09.jpg",
-                      @"http://pic.meizitu.com/wp-content/uploads/2015a/11/20/10.jpg",
-                      @"http://t53-4.yunpan.360.cn/p2/800-600.1540425da8804644ac7fcae31ed0de69b5a33bc8_whjt_53_whjt3_t.993a0d.jpg?st=syWuhyPzwYT5ELjVEeCbDg&e=1454655430"];
+                      @"http://pic.meizitu.com/wp-content/uploads/2015a/11/20/10.jpg"];
     }
     return _imageArr;
 }

@@ -9,7 +9,7 @@
 #import "RoundFourDemoViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
-
+#import "DSRoundImageView.h"
 
 @implementation RoundFourDemoViewController
 
@@ -38,9 +38,8 @@
     [contentScrollView addSubview:avatarImageView];
     
     
-    
     /*------------------网络图片，在图片完成加载的时候绘制圆角-----------------------*/
-    NSString *imageUrl = @"http://t53-4.yunpan.360.cn/p2/800-600.1540425da8804644ac7fcae31ed0de69b5a33bc8_whjt_53_whjt3_t.993a0d.jpg?st=syWuhyPzwYT5ELjVEeCbDg&e=145465543";
+    NSString *imageUrl = @"http://t53-4.yunpan.360.cn/p2/800-600.1540425da8804644ac7fcae31ed0de69b5a33bc8_whjt_53_whjt3_t.993a0d.jpg?st=syWuhyPzwYT5ELjVEeCbDg&e=1454655430";
     
 
     UIImageView  *avatarImageViewUrl = [[UIImageView alloc] initWithFrame:CGRectMake(100, 250, 100, 100)];
@@ -58,9 +57,12 @@
     [contentScrollView addSubview:avatarImageViewUrl];
     
     
-    //封装到SDWebImage
-    UIImageView  *avatarImageViewUrl2 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 400, 100, 100)];
-    [avatarImageViewUrl2 sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"avatar"]   options:0 isClipRound:YES progress:nil completed:nil];
+    //封装到UIImageView里
+    DSRoundImageView  *avatarImageViewUrl2 = [[DSRoundImageView alloc] initWithFrame:CGRectMake(100, 400, 100, 100)];
+    [avatarImageViewUrl2 sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        avatarImageViewUrl2.image = image;
+    }];
     [contentScrollView addSubview:avatarImageViewUrl2];
 }
 

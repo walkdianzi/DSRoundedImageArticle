@@ -31,15 +31,16 @@
     
     NSString *imageUrl = @"http://t53-4.yunpan.360.cn/p2/800-600.1540425da8804644ac7fcae31ed0de69b5a33bc8_whjt_53_whjt3_t.993a0d.jpg?st=syWuhyPzwYT5ELjVEeCbDg&e=1454655430";
     
-    //UIImageView加载网络图片光栅化会产生一点模糊
+    //UIImageView加载网络图片光栅化
     UIImageView  *avatarImageViewUrl = [[UIImageView alloc] initWithFrame:CGRectMake(100, 250, 100, 100)];
     [avatarImageViewUrl.layer setCornerRadius:50];
     [avatarImageViewUrl sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
     avatarImageViewUrl.layer.shouldRasterize = YES;
+    avatarImageViewUrl.layer.rasterizationScale=[UIScreen mainScreen].scale;  //不加这句会产生模糊
     [contentScrollView addSubview:avatarImageViewUrl];
     
     
-    //UIButton 加载网络图片光栅化不会模糊
+    //UIButton 加载网络图片光栅化
     UIButton *avatarButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 400, 100, 100)];
     avatarButton.clipsToBounds = YES;
     [avatarButton.layer setCornerRadius:50];

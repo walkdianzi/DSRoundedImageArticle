@@ -40,6 +40,10 @@
 		1367BC7F1C3D053600E0716B /* RoundImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1367BC7E1C3D053600E0716B /* RoundImageButton.m */; };
 		13D294AD1C3DFB52000E6376 /* RoundFiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294AC1C3DFB52000E6376 /* RoundFiveDemoViewController.m */; };
 		13D294B01C3DFCC2000E6376 /* RoundSixDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294AF1C3DFCC2000E6376 /* RoundSixDemoViewController.m */; };
+		13D294C31C3F67C9000E6376 /* DSRoundImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294C21C3F67C9000E6376 /* DSRoundImageView.m */; };
+		13D294C61C3F8264000E6376 /* RoundSevenDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294C51C3F8264000E6376 /* RoundSevenDemoViewController.m */; };
+		13D294C91C3F8624000E6376 /* RoundEightDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294C81C3F8624000E6376 /* RoundEightDemoViewController.m */; };
+		13D294CC1C3F885B000E6376 /* RoundNineDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D294CB1C3F885B000E6376 /* RoundNineDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +131,14 @@
 		13D294AC1C3DFB52000E6376 /* RoundFiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundFiveDemoViewController.m; sourceTree = "<group>"; };
 		13D294AE1C3DFCC2000E6376 /* RoundSixDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundSixDemoViewController.h; sourceTree = "<group>"; };
 		13D294AF1C3DFCC2000E6376 /* RoundSixDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundSixDemoViewController.m; sourceTree = "<group>"; };
+		13D294C11C3F67C9000E6376 /* DSRoundImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSRoundImageView.h; sourceTree = "<group>"; };
+		13D294C21C3F67C9000E6376 /* DSRoundImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSRoundImageView.m; sourceTree = "<group>"; };
+		13D294C41C3F8264000E6376 /* RoundSevenDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundSevenDemoViewController.h; sourceTree = "<group>"; };
+		13D294C51C3F8264000E6376 /* RoundSevenDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundSevenDemoViewController.m; sourceTree = "<group>"; };
+		13D294C71C3F8624000E6376 /* RoundEightDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundEightDemoViewController.h; sourceTree = "<group>"; };
+		13D294C81C3F8624000E6376 /* RoundEightDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundEightDemoViewController.m; sourceTree = "<group>"; };
+		13D294CA1C3F885B000E6376 /* RoundNineDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundNineDemoViewController.h; sourceTree = "<group>"; };
+		13D294CB1C3F885B000E6376 /* RoundNineDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundNineDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +248,12 @@
 				13D294AC1C3DFB52000E6376 /* RoundFiveDemoViewController.m */,
 				13D294AE1C3DFCC2000E6376 /* RoundSixDemoViewController.h */,
 				13D294AF1C3DFCC2000E6376 /* RoundSixDemoViewController.m */,
+				13D294C41C3F8264000E6376 /* RoundSevenDemoViewController.h */,
+				13D294C51C3F8264000E6376 /* RoundSevenDemoViewController.m */,
+				13D294C71C3F8624000E6376 /* RoundEightDemoViewController.h */,
+				13D294C81C3F8624000E6376 /* RoundEightDemoViewController.m */,
+				13D294CA1C3F885B000E6376 /* RoundNineDemoViewController.h */,
+				13D294CB1C3F885B000E6376 /* RoundNineDemoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,6 +309,8 @@
 		1367BC791C3D04AD00E0716B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13D294C11C3F67C9000E6376 /* DSRoundImageView.h */,
+				13D294C21C3F67C9000E6376 /* DSRoundImageView.m */,
 				1367BC7A1C3D04C400E0716B /* RoundImageView.h */,
 				1367BC7B1C3D04C400E0716B /* RoundImageView.m */,
 				1367BC7D1C3D053600E0716B /* RoundImageButton.h */,
@@ -443,9 +463,12 @@
 				1367BC721C3CF31F00E0716B /* UIButton+WebCache.m in Sources */,
 				1367BC711C3CF31F00E0716B /* SDWebImagePrefetcher.m in Sources */,
 				1367BC6F1C3CF31F00E0716B /* SDWebImageDownloaderOperation.m in Sources */,
+				13D294CC1C3F885B000E6376 /* RoundNineDemoViewController.m in Sources */,
+				13D294C61C3F8264000E6376 /* RoundSevenDemoViewController.m in Sources */,
 				1367BC421C3CEECB00E0716B /* RoundThreeDemoViewController.m in Sources */,
 				1367BBFC1C3CE9BC00E0716B /* AppDelegate.m in Sources */,
 				1367BC741C3CF31F00E0716B /* UIImage+MultiFormat.m in Sources */,
+				13D294C31C3F67C9000E6376 /* DSRoundImageView.m in Sources */,
 				1367BC7C1C3D04C400E0716B /* RoundImageView.m in Sources */,
 				1367BC3F1C3CEEBC00E0716B /* RoundTwoDemoViewController.m in Sources */,
 				1367BC6B1C3CF31F00E0716B /* SDImageCache.m in Sources */,
@@ -454,6 +477,7 @@
 				1367BC3C1C3CEE8000E0716B /* RoundOneDemoViewController.m in Sources */,
 				13D294B01C3DFCC2000E6376 /* RoundSixDemoViewController.m in Sources */,
 				1367BC731C3CF31F00E0716B /* UIImage+GIF.m in Sources */,
+				13D294C91C3F8624000E6376 /* RoundEightDemoViewController.m in Sources */,
 				1367BC6E1C3CF31F00E0716B /* SDWebImageDownloader.m in Sources */,
 				1367BC771C3CF31F00E0716B /* UIImageView+WebCache.m in Sources */,
 				1367BC691C3CF31F00E0716B /* MKAnnotationView+WebCache.m in Sources */,
