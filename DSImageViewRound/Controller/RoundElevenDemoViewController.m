@@ -1,19 +1,19 @@
 //
-//  RoundEightDemoController.m
+//  RoundElevenDemoViewController.m
 //  DSImageViewRound
 //
-//  Created by dasheng on 16/1/8.
+//  Created by dasheng on 16/1/12.
 //  Copyright © 2016年 dasheng. All rights reserved.
 //
 
-#import "RoundEightDemoViewController.h"
+#import "RoundElevenDemoViewController.h"
 #import "DSRoundImageView.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 
 #define kHeight 40
 
-@interface RoundEightDemoViewController()<UITableViewDelegate, UITableViewDataSource>
+@interface RoundElevenDemoViewController()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -21,7 +21,8 @@
 
 @end
 
-@implementation RoundEightDemoViewController
+
+@implementation RoundElevenDemoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +35,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     NSInteger total = CGRectGetWidth(self.view.frame)/kHeight;
     if (!cell) {
@@ -47,15 +49,13 @@
         
     }
     for (int i=1; i<=total; i++) {
+        
         UIImageView *imageView = [cell viewWithTag:i];
         NSURL *url = [NSURL URLWithString:[self urlStr:indexPath.row]];
+        [imageView setIsRound:YES withSize:CGSizeMake(kHeight, kHeight)];
         [imageView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
-                UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, NO, [UIScreen mainScreen].scale);
-                [[UIBezierPath bezierPathWithRoundedRect:imageView.bounds cornerRadius:kHeight] addClip];
-                [image drawInRect:imageView.bounds];
-                imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
+            imageView.image = image;
         }];
     }
     

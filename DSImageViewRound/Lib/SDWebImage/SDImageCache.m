@@ -10,6 +10,7 @@
 #import "SDWebImageDecoder.h"
 #import "UIImage+MultiFormat.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "UIImage+DSRoundImage.h"
 
 static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
 // PNG signature bytes and data (below)
@@ -148,7 +149,10 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
     if (!image || !key) {
         return;
     }
-
+    
+    //!!!: 绘制圆角
+    image = [UIImage createRoundedRectImage:image withKey:key];
+    
     [self.memCache setObject:image forKey:key cost:image.size.height * image.size.width * image.scale * image.scale];
 
     if (toDisk) {
@@ -228,10 +232,13 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
 
 - (UIImage *)imageFromDiskCacheForKey:(NSString *)key {
     // First check the in-memory cache...
+    
+    
     UIImage *image = [self imageFromMemoryCacheForKey:key];
     if (image) {
         return image;
     }
+    
 
     // Second check the disk cache...
     UIImage *diskImage = [self diskImageForKey:key];

@@ -9,10 +9,27 @@
 #import "UIImageView+WebCache.h"
 #import "objc/runtime.h"
 #import "UIView+WebCacheOperation.h"
+#import "UIImage+DSRoundImage.h"
 
 static char imageURLKey;
 
 @implementation UIImageView (WebCache)
+
+
+- (void)setIsRound:(BOOL)isRound withSize:(CGSize)size{
+    
+    [[SDWebImageManager sharedManager] setCacheKeyFilter:^(NSURL *url) {
+        
+        //!!!: 绘制圆角
+        if (isRound) {
+
+            NSString *urlStr = [NSString stringWithFormat:@"%@%fx%f%@%@",DSRoundImagePreString,size.width,size.height,DSRoundImagePreString,[url absoluteString]];
+            return urlStr;
+        }else{
+            return [url absoluteString];
+        }
+    }];
+}
 
 - (void)sd_setImageWithURL:(NSURL *)url {
     [self sd_setImageWithURL:url placeholderImage:nil options:0 progress:nil completed:nil];
@@ -59,8 +76,6 @@ static char imageURLKey;
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (!wself) return;
             
-            
-            
             dispatch_main_sync_safe(^{
                 if (!wself) return;
                 if (image) {
@@ -71,24 +86,6 @@ static char imageURLKey;
                         wself.image = placeholder;
                         [wself setNeedsLayout];
                     }
-                }
-                
-                if (isRound) {
-                    // Begin a new image that will be the new image with the rounded corners
-                    // (here with the size of an UIImageView)
-                    UIGraphicsBeginImageContextWithOptions(wself.bounds.size, NO, [UIScreen mainScreen].scale);
-                    
-                    // Add a clip before drawing anything, in the shape of an rounded rect
-                    [[UIBezierPath bezierPathWithRoundedRect:wself.bounds
-                                                cornerRadius:wself.bounds.size.width/2] addClip];
-                    // Draw your image
-                    [image drawInRect:wself.bounds];
-                    
-                    // Get the image, here setting the UIImageView image
-                    wself.image = UIGraphicsGetImageFromCurrentImageContext();
-                    
-                    // Lets forget about that we were drawing
-                    UIGraphicsEndImageContext();
                 }
                 
                 if (completedBlock && finished) {

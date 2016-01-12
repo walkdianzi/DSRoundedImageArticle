@@ -34,18 +34,18 @@
     [image drawInRect:avatarImageView.bounds];
     avatarImageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     [contentScrollView addSubview:avatarImageView];
     
     
+    //!!!: 这种方式不合适有问题，内存会暴增
     /*------------------网络图片，在图片完成加载的时候绘制圆角-----------------------*/
+    
     NSString *imageUrl = @"http://t53-4.yunpan.360.cn/p2/800-600.1540425da8804644ac7fcae31ed0de69b5a33bc8_whjt_53_whjt3_t.993a0d.jpg?st=syWuhyPzwYT5ELjVEeCbDg&e=1454655430";
     
 
     UIImageView  *avatarImageViewUrl = [[UIImageView alloc] initWithFrame:CGRectMake(100, 250, 100, 100)];
     //在回调函数里绘制
     [avatarImageViewUrl sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"avatar"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
         
         UIGraphicsBeginImageContextWithOptions(avatarImageViewUrl.bounds.size, NO, [UIScreen mainScreen].scale);
         [[UIBezierPath bezierPathWithRoundedRect:avatarImageViewUrl.bounds

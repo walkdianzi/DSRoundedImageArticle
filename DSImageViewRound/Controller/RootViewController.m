@@ -20,13 +20,15 @@
                        @"RoundSix",
                        @"RoundSeven",
                        @"RoundEight",
-                       @"RoundNine"
+                       @"RoundNine",
+                       @"RoundEleven"
                        ],
                @"ImageViewRound":@[
                             @"RoundOne",
                             @"RoundTwo",
                             @"RoundThree",
-                            @"RoundFour"
+                            @"RoundFour",
+                            @"RoundTen"
                         ]
              };
     
@@ -34,17 +36,19 @@
                
                    @"Test":@[
                            @"setCornerRadius测试",
-                           @"ScrollView Core Graphics测试(主线程)",   //UIScrollView  图片圆角主线程绘制，阻塞了主线程，进入页面有点慢（内存280M左右）
-                           @"ScrollView Core Graphics测试(后台线程)", //UIScrollView  图片圆角后台线程绘制，内存占用超过1G很容易崩溃(第一次就点击这个内存超过1G，如果先点击上面一个再点击这个内存250M左右)
-                           @"TableView Core Graphics测试(主线程)",  //TableView  图片圆角主线程绘制，滚动的时候有卡顿(内存250M左右)
-                           @"TableView Core Graphics测试(后台线程)" //TableView  图片圆角后台线程绘制，内存占用没有超过1G的没崩溃(内存250M左右)
+                           @"ScrollView drawInRect测试(主线程)",   //UIScrollView  图片圆角主线程绘制，阻塞了主线程，进入页面有点慢（内存280M左右）
+                           @"ScrollView drawInRect测试(后台线程)", //UIScrollView  图片圆角后台线程绘制，内存占用超过1G很容易崩溃(第一次就点击这个内存超过1G，如果先点击上面一个再点击这个内存250M左右)
+                           @"TableView drawInRect测试(主线程)",  //TableView  图片圆角主线程绘制，滚动的时候有卡顿(内存250M左右)
+                           @"TableView drawInRect测试(后台线程)", //TableView  图片圆角后台线程绘制，内存占用没有超过1G的没崩溃(内存250M左右)
+                           @"在SDWebImage库里处理图片时绘制圆角"
                            ],
                    
                    @"ImageViewRound":@[
                            @"setCornerRadius最简单的设置圆角",
                            @"setCornerRadius设置圆角后光栅化",
                            @"图片覆盖设置圆角",
-                           @"Core Graphics绘制圆角"
+                           @"UIimage drawInRect绘制圆角",
+                           @"SDWebImage处理图片时绘制圆角(最好)"
                            ],
                };
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];

@@ -8,6 +8,7 @@
 
 #import "SDWebImageManager.h"
 #import <objc/message.h>
+#import "UIImage+DSRoundImage.h"
 
 @interface SDWebImageCombinedOperation : NSObject <SDWebImageOperation>
 
@@ -217,7 +218,13 @@
 
                             dispatch_main_sync_safe(^{
                                 if (!weakOperation.isCancelled) {
-                                    completedBlock(transformedImage, nil, SDImageCacheTypeNone, finished, url);
+                                    
+                                    //!!!: 绘制圆角
+                                    if ([key hasPrefix:[NSString stringWithFormat:@"%@",DSRoundImagePreString]]) {
+                                        completedBlock([self.imageCache imageFromDiskCacheForKey:key], nil, SDImageCacheTypeNone, finished, url);
+                                    }else{
+                                        completedBlock(transformedImage, nil, SDImageCacheTypeNone, finished, url);
+                                    }
                                 }
                             });
                         });
@@ -229,7 +236,15 @@
 
                         dispatch_main_sync_safe(^{
                             if (!weakOperation.isCancelled) {
-                                completedBlock(downloadedImage, nil, SDImageCacheTypeNone, finished, url);
+                                
+                                //!!!: 绘制圆角
+                                if ([key hasPrefix:[NSString stringWithFormat:@"%@",DSRoundImagePreString]]) {
+                                    
+                                    completedBlock([self.imageCache imageFromDiskCacheForKey:key], nil, SDImageCacheTypeNone, finished, url);
+                                }else{
+                                    completedBlock(downloadedImage, nil, SDImageCacheTypeNone, finished, url);
+                                }
+                                
                             }
                         });
                     }
@@ -252,6 +267,7 @@
         else if (image) {
             dispatch_main_sync_safe(^{
                 if (!weakOperation.isCancelled) {
+                    
                     completedBlock(image, nil, cacheType, YES, url);
                 }
             });

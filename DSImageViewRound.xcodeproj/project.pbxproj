@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134962841C44A3630070F1B5 /* UIImage+DSRoundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 134962831C44A3630070F1B5 /* UIImage+DSRoundImage.m */; };
+		134962871C44ECC60070F1B5 /* RoundTenDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 134962861C44ECC60070F1B5 /* RoundTenDemoViewController.m */; };
+		1366CFC11C45168700A6D178 /* RoundElevenDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFC01C45168700A6D178 /* RoundElevenDemoViewController.m */; };
 		1367BBF91C3CE9BC00E0716B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1367BBF81C3CE9BC00E0716B /* main.m */; };
 		1367BBFC1C3CE9BC00E0716B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1367BBFB1C3CE9BC00E0716B /* AppDelegate.m */; };
 		1367BC021C3CE9BC00E0716B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1367BC001C3CE9BC00E0716B /* Main.storyboard */; };
@@ -64,6 +67,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		134962821C44A3630070F1B5 /* UIImage+DSRoundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DSRoundImage.h"; sourceTree = "<group>"; };
+		134962831C44A3630070F1B5 /* UIImage+DSRoundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DSRoundImage.m"; sourceTree = "<group>"; };
+		134962851C44ECC60070F1B5 /* RoundTenDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundTenDemoViewController.h; sourceTree = "<group>"; };
+		134962861C44ECC60070F1B5 /* RoundTenDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundTenDemoViewController.m; sourceTree = "<group>"; };
+		1366CFBF1C45168700A6D178 /* RoundElevenDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundElevenDemoViewController.h; sourceTree = "<group>"; };
+		1366CFC01C45168700A6D178 /* RoundElevenDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundElevenDemoViewController.m; sourceTree = "<group>"; };
 		1367BBF41C3CE9BC00E0716B /* DSImageViewRound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSImageViewRound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1367BBF81C3CE9BC00E0716B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1367BBFA1C3CE9BC00E0716B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -254,6 +263,10 @@
 				13D294C81C3F8624000E6376 /* RoundEightDemoViewController.m */,
 				13D294CA1C3F885B000E6376 /* RoundNineDemoViewController.h */,
 				13D294CB1C3F885B000E6376 /* RoundNineDemoViewController.m */,
+				134962851C44ECC60070F1B5 /* RoundTenDemoViewController.h */,
+				134962861C44ECC60070F1B5 /* RoundTenDemoViewController.m */,
+				1366CFBF1C45168700A6D178 /* RoundElevenDemoViewController.h */,
+				1366CFC01C45168700A6D178 /* RoundElevenDemoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -315,6 +328,8 @@
 				1367BC7B1C3D04C400E0716B /* RoundImageView.m */,
 				1367BC7D1C3D053600E0716B /* RoundImageButton.h */,
 				1367BC7E1C3D053600E0716B /* RoundImageButton.m */,
+				134962821C44A3630070F1B5 /* UIImage+DSRoundImage.h */,
+				134962831C44A3630070F1B5 /* UIImage+DSRoundImage.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,7 +466,9 @@
 			files = (
 				1367BC6D1C3CF31F00E0716B /* SDWebImageDecoder.m in Sources */,
 				1367BC701C3CF31F00E0716B /* SDWebImageManager.m in Sources */,
+				134962841C44A3630070F1B5 /* UIImage+DSRoundImage.m in Sources */,
 				13D294AD1C3DFB52000E6376 /* RoundFiveDemoViewController.m in Sources */,
+				134962871C44ECC60070F1B5 /* RoundTenDemoViewController.m in Sources */,
 				1367BC6A1C3CF31F00E0716B /* NSData+ImageContentType.m in Sources */,
 				1367BC6C1C3CF31F00E0716B /* SDWebImageCompat.m in Sources */,
 				1367BC781C3CF31F00E0716B /* UIView+WebCacheOperation.m in Sources */,
@@ -469,6 +486,7 @@
 				1367BBFC1C3CE9BC00E0716B /* AppDelegate.m in Sources */,
 				1367BC741C3CF31F00E0716B /* UIImage+MultiFormat.m in Sources */,
 				13D294C31C3F67C9000E6376 /* DSRoundImageView.m in Sources */,
+				1366CFC11C45168700A6D178 /* RoundElevenDemoViewController.m in Sources */,
 				1367BC7C1C3D04C400E0716B /* RoundImageView.m in Sources */,
 				1367BC3F1C3CEEBC00E0716B /* RoundTwoDemoViewController.m in Sources */,
 				1367BC6B1C3CF31F00E0716B /* SDImageCache.m in Sources */,

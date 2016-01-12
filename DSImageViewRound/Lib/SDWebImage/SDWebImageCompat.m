@@ -7,6 +7,7 @@
 //
 
 #import "SDWebImageCompat.h"
+#import "UIImage+DSRoundImage.h"
 
 #if !__has_feature(objc_arc)
 #error SDWebImage is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
@@ -16,6 +17,9 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
     if (!image) {
         return nil;
     }
+    
+    //!!!: 绘制圆角
+    image = [UIImage createRoundedRectImage:image withKey:key];
     
     if ([image.images count] > 0) {
         NSMutableArray *scaledImages = [NSMutableArray array];

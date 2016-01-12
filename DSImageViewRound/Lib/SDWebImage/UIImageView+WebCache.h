@@ -44,6 +44,8 @@
  */
 @interface UIImageView (WebCache)
 
+- (void)setIsRound:(BOOL)isRound withSize:(CGSize)size;
+
 /**
  * Get the current image URL.
  *

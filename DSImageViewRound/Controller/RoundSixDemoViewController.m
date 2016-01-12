@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 #import "DSRoundImageView.h"
+#import "UIImage+DSRoundImage.h"
 
 @interface RoundSixDemoViewController()
 
@@ -32,22 +33,16 @@
     
     
     /*------------------网络图片，在图片完成加载的时候绘制圆角-----------------------*/
-    
-    //TODO: 解决Core Graphics绘制圆角内存暴增问题
-    
-    
-    //封装到DSRoundImageView
     for(int i = 0; i < 500; i++){
         
         int cell = i%7;
         int row = i/7;
-        DSRoundImageView  *avatarImageViewUrl2 = [[DSRoundImageView alloc] initWithFrame:CGRectMake(cell*55, row*55, 50, 50)];
+        UIImageView  *avatarImageViewUrl2 = [[UIImageView alloc] initWithFrame:CGRectMake(cell*55, row*55, 50, 50)];
         
         [avatarImageViewUrl2 sd_setImageWithURL:[NSURL URLWithString:[self urlStr:i]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             UIGraphicsBeginImageContextWithOptions(avatarImageViewUrl2.bounds.size, NO, [UIScreen mainScreen].scale);
-            [[UIBezierPath bezierPathWithRoundedRect:avatarImageViewUrl2.bounds
-                                        cornerRadius:50] addClip];
+            [[UIBezierPath bezierPathWithRoundedRect:avatarImageViewUrl2.bounds cornerRadius:25] addClip];
             [image drawInRect:avatarImageViewUrl2.bounds];
             avatarImageViewUrl2.image = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
