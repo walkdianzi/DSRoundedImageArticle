@@ -47,8 +47,8 @@
 
 - UIImage drawInRect绘制圆角
 
-    > 这种方式性能最好，但是UIButton上不知道怎么绘制，可以用UIimageView添加个
-      点击手势当做UIButton使用。
+    > 这种方式GPU损耗低内存占用大，而且UIButton上不知道怎么绘制，可以用
+       UIimageView添加个点击手势当做UIButton使用。
 
     > 
       ```OC
@@ -69,7 +69,8 @@
       int w = imageSize.width;
       int h = imageSize.height;
       int radius = imageSize.width/2;
-      
+      ```
+      ```OC
       UIImage *img = image;
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
