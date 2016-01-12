@@ -9,8 +9,7 @@
      这样设置会触发离屏渲染，比较消耗性能。比如当一个页面上有十几头像这样设置了圆角
      会明显感觉到卡顿。
      
-     注意：ios9.0之后对UIImageView的圆角设置做了优化，UIImageView这样设置圆角
-     不会触发离屏渲染，ios9.0之前还是会触发离屏渲染。而UIButton还是都会触发离屏渲染。
+     注意：png图片UIImageView处理圆角是不会产生离屏渲染的。（ios9.0之后不会离屏渲染，ios9.0之前还是会离屏渲染）。
 
 ------
 
@@ -60,11 +59,8 @@
       UIGraphicsEndImageContext();
       ```
       
-    > 这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
-      里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
-      ```OC
-      - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options isClipRound:(BOOL)isRound progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock;
-      ```
+    > 这段方法可以写在SDWebImage的completed回调里，在主线程异步绘制。
+      也可以封装到UIImageView里，写了个DSRoundImageView。后台线程异步绘制，不会阻塞主线程。
       
 -------
 
