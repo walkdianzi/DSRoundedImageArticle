@@ -74,7 +74,7 @@
       UIImage *img = image;
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
-      CGRect rect = CGRectMake(0, 0, w, h);\br
+      CGRect rect = CGRectMake(0, 0, w, h);\<br>
       CGContextBeginPath(context);
       addRoundedRectToPath(context, rect, radius, radius);
       CGContextClosePath(context);
