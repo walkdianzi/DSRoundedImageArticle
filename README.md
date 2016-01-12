@@ -15,7 +15,7 @@
 
 所有如果要高性能的设置圆角就需要找另外的方法了。下面是我找到的一些方法
 
-![IMG_1802.PNG](http://upload-images.jianshu.io/upload_images/101810-a4dbf287a34ed2f4.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![IMG_1816.PNG](http://upload-images.jianshu.io/upload_images/101810-9c34cd972e319727.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 **设置圆角的方法**
@@ -45,7 +45,7 @@
     > 这种方法就是多加了一张透明的图片，GPU计算多层的混合渲染blending也是会消耗
      一点性能的，但比第一种方法还是好上很多的。
 
-- Core Graphics绘制圆角
+- UIImage drawInRect绘制圆角
 
     > 这种方式性能最好，但是UIButton上不知道怎么绘制，可以用UIimageView添加个
       点击手势当做UIButton使用。
@@ -62,6 +62,34 @@
     > 这段方法可以写在SDWebImage的completed回调里，在主线程异步绘制。
       也可以封装到UIImageView里，写了个DSRoundImageView。后台线程异步绘制，不会阻塞主线程。
       
+- SDWebImage处理图片时Core Graphics绘制圆角
+ 
+    > //UIImage绘制为圆角
+      ```OC
+      int w = imageSize.width;
+      int h = imageSize.height;
+      int radius = imageSize.width/2;
+      
+      UIImage *img = image;
+      CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+      CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
+      CGRect rect = CGRectMake(0, 0, w, h);
+     
+      CGContextBeginPath(context);
+      addRoundedRectToPath(context, rect, radius, radius);
+      CGContextClosePath(context);
+      CGContextClip(context);
+      CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
+      CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+      img = [UIImage imageWithCGImage:imageMasked];
+     
+      CGContextRelease(context);
+      CGColorSpaceRelease(colorSpace);
+      CGImageRelease(imageMasked);
+      ```
+    > 以上代码我写成了UIImage的类别:UIImage+DSRoundImage.h
+      并在SDWebImage库里处理image的时候使用类别方法绘制圆角并缓存。
+
 -------
 
 **使用Instruments的Core Animation查看性能**
@@ -76,8 +104,11 @@
 用Instruments测试得
 - 第一种方法，ios9.0之前UIImageView和UIButton都高亮为黄色。ios9.0之后只有UIButton高亮为黄色。
 
-- 第二种方法UIImageView和UIButton都高亮为绿色，但UIImageView加载网络图片后会有一点模糊
+- 第二种方法UIImageView和UIButton都高亮为绿色
 
-- 第三种方法无任何高亮，说明没离屏渲染
+- 第三种方法，无任何高亮，说明没离屏渲染。
+  这种圆片覆盖的方法一般只用在底色为纯色的时候，如果圆角图片的父View是张图片的时候就没办法了，而且底色如果是多种颜色的话那   要做多张不同颜色的圆片覆盖。（可以用代码取底色的颜色值给圆片着色）
 
-- 第四种方法无任何高亮，说明没离屏渲染
+- 第四种方法无任何高亮，说明没离屏渲染（但是CPU消耗和内存占用会很大）
+ 
+- 第五种方法无任何高亮，说明没离屏渲染，而且内存占用也不大。(暂时感觉是最优方法)
