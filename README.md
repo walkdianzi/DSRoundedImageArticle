@@ -59,11 +59,8 @@
       UIGraphicsEndImageContext();
       ```
       
-    > 这段方法可以写在SDWebImage的completed回调里，也可以在UIImageView+WebCache.h
-      里添加一个方法，isClipRound判断是否切圆角，把上面绘制圆角的方法封装到里面。
-      ```OC
-      - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options isClipRound:(BOOL)isRound progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock;
-      ```
+    > 这段方法可以写在SDWebImage的completed回调里，在主线程异步绘制。
+      也可以封装到UIImageView里，写了个DSRoundImageView。后台线程异步绘制，不会阻塞主线程。
       
 -------
 
