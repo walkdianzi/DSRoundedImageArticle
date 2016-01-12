@@ -75,7 +75,8 @@
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
       CGRect rect = CGRectMake(0, 0, w, h);
-                    
+     ```
+     ```OC
       CGContextBeginPath(context);
       addRoundedRectToPath(context, rect, radius, radius);
       CGContextClosePath(context);
@@ -83,13 +84,14 @@
       CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
       CGImageRef imageMasked = CGBitmapContextCreateImage(context);
       img = [UIImage imageWithCGImage:imageMasked];
-     
+     ```
+     ```OC
       CGContextRelease(context);
       CGColorSpaceRelease(colorSpace);
       CGImageRelease(imageMasked);
       ```
-    > 以上代码我写成了UIImage的类别:UIImage+DSRoundImage.h
-      并在SDWebImage库里处理image的时候使用类别方法绘制圆角并缓存。
+     以上代码我写成了UIImage的类别:UIImage+DSRoundImage.h
+     并在SDWebImage库里处理image的时候使用类别方法绘制圆角并缓存。
 
 -------
 
