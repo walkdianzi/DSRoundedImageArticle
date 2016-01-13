@@ -62,12 +62,11 @@
 - SDWebImage处理图片时Core Graphics绘制圆角
  
     > //UIImage绘制为圆角
-      ```OC
+      ```objectivec
       int w = imageSize.width;
       int h = imageSize.height;
-      int radius = imageSize.width/2;
-      ```
-      ```OC
+      int radius = imageSize.width/2;  
+      
       UIImage *img = image;
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
