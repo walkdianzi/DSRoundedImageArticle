@@ -101,6 +101,9 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
 
 + (id)createRoundedRectImage:(UIImage *)image size:(CGSize)size radius:(int)radius{
     
+    size = CGSizeMake(size.width*2, size.height*2);
+    radius = radius*2;
+    
     UIImage *img = image;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(NULL, size.width, size.height, 8, 4 * size.width, colorSpace, kCGImageAlphaPremultipliedFirst);
