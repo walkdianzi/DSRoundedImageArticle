@@ -66,13 +66,14 @@
       int w = imageSize.width;
       int h = imageSize.height;
       int radius = imageSize.width/2;  
-      
+      ```
+      ```objectivec
       UIImage *img = image;
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
       CGRect rect = CGRectMake(0, 0, w, h);
-     ```
-     ```OC
+      ```
+      ```OC
       CGContextBeginPath(context);
       addRoundedRectToPath(context, rect, radius, radius);
       CGContextClosePath(context);
@@ -80,8 +81,8 @@
       CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
       CGImageRef imageMasked = CGBitmapContextCreateImage(context);
       img = [UIImage imageWithCGImage:imageMasked];
-     ```
-     ```OC
+      ```
+      ```OC
       CGContextRelease(context);
       CGColorSpaceRelease(colorSpace);
       CGImageRelease(imageMasked);
