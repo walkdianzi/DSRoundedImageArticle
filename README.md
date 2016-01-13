@@ -48,7 +48,7 @@
        UIimageView添加个点击手势当做UIButton使用。
 
     > 
-      ```OC
+      ```objectivec
       UIGraphicsBeginImageContextWithOptions(avatarImageView.bounds.size, NO, [UIScreen mainScreen].scale);
       [[UIBezierPath bezierPathWithRoundedRect:avatarImageView.bounds cornerRadius:50] addClip];
       [image drawInRect:avatarImageView.bounds];
