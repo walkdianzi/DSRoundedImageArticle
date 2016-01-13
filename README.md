@@ -73,7 +73,7 @@
       CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
       CGRect rect = CGRectMake(0, 0, w, h);
       ```
-      ```OC
+      ```objectivec
       CGContextBeginPath(context);
       addRoundedRectToPath(context, rect, radius, radius);
       CGContextClosePath(context);
@@ -82,7 +82,7 @@
       CGImageRef imageMasked = CGBitmapContextCreateImage(context);
       img = [UIImage imageWithCGImage:imageMasked];
       ```
-      ```OC
+      ```objectivec
       CGContextRelease(context);
       CGColorSpaceRelease(colorSpace);
       CGImageRelease(imageMasked);
