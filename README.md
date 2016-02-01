@@ -13,7 +13,7 @@
 
 ------
 
-所有如果要高性能的设置圆角就需要找另外的方法了。下面是我找到的一些方法
+所以如果要高性能的设置圆角就需要找另外的方法了。下面是我找到的一些方法
 
 ![IMG_1816.PNG](http://upload-images.jianshu.io/upload_images/101810-9c34cd972e319727.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
