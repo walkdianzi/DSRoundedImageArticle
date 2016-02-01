@@ -114,7 +114,7 @@
 - 第五种方法无任何高亮，说明没离屏渲染，而且内存占用也不大。(暂时感觉是最优方法)
 
 #使用方法
-暂时没写
+[查看具体使用demo](https://github.com/walkdianzi/DSRoundedImageDemo)
 
 #最后
 如果我的文章对你有帮助欢迎 Star  
