@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1332DFE21CEC70AD00BB1CDB /* RoundTwelveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332DFE11CEC70AD00BB1CDB /* RoundTwelveDemoViewController.m */; };
+		1332DFE61CEC715700BB1CDB /* HJCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332DFE51CEC715700BB1CDB /* HJCornerRadius.m */; };
 		134962841C44A3630070F1B5 /* UIImage+DSRoundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 134962831C44A3630070F1B5 /* UIImage+DSRoundImage.m */; };
 		134962871C44ECC60070F1B5 /* RoundTenDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 134962861C44ECC60070F1B5 /* RoundTenDemoViewController.m */; };
 		1366CFC11C45168700A6D178 /* RoundElevenDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFC01C45168700A6D178 /* RoundElevenDemoViewController.m */; };
@@ -67,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1332DFE01CEC70AD00BB1CDB /* RoundTwelveDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundTwelveDemoViewController.h; sourceTree = "<group>"; };
+		1332DFE11CEC70AD00BB1CDB /* RoundTwelveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundTwelveDemoViewController.m; sourceTree = "<group>"; };
+		1332DFE41CEC715700BB1CDB /* HJCornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCornerRadius.h; sourceTree = "<group>"; };
+		1332DFE51CEC715700BB1CDB /* HJCornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCornerRadius.m; sourceTree = "<group>"; };
 		134962821C44A3630070F1B5 /* UIImage+DSRoundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DSRoundImage.h"; sourceTree = "<group>"; };
 		134962831C44A3630070F1B5 /* UIImage+DSRoundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DSRoundImage.m"; sourceTree = "<group>"; };
 		134962851C44ECC60070F1B5 /* RoundTenDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundTenDemoViewController.h; sourceTree = "<group>"; };
@@ -175,6 +181,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1332DFE31CEC715700BB1CDB /* HJCornerRadius */ = {
+			isa = PBXGroup;
+			children = (
+				1332DFE41CEC715700BB1CDB /* HJCornerRadius.h */,
+				1332DFE51CEC715700BB1CDB /* HJCornerRadius.m */,
+			);
+			path = HJCornerRadius;
+			sourceTree = "<group>";
+		};
 		1367BBEB1C3CE9BC00E0716B = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +282,8 @@
 				134962861C44ECC60070F1B5 /* RoundTenDemoViewController.m */,
 				1366CFBF1C45168700A6D178 /* RoundElevenDemoViewController.h */,
 				1366CFC01C45168700A6D178 /* RoundElevenDemoViewController.m */,
+				1332DFE01CEC70AD00BB1CDB /* RoundTwelveDemoViewController.h */,
+				1332DFE11CEC70AD00BB1CDB /* RoundTwelveDemoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -274,6 +291,7 @@
 		1367BC461C3CF31F00E0716B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1332DFE31CEC715700BB1CDB /* HJCornerRadius */,
 				1367BC471C3CF31F00E0716B /* SDWebImage */,
 			);
 			path = Lib;
@@ -477,6 +495,7 @@
 				1367BC761C3CF31F00E0716B /* UIImageView+HighlightedWebCache.m in Sources */,
 				1367BC391C3CE9F900E0716B /* RootViewController.m in Sources */,
 				1367BC351C3CE9F900E0716B /* BaseViewController.m in Sources */,
+				1332DFE21CEC70AD00BB1CDB /* RoundTwelveDemoViewController.m in Sources */,
 				1367BC721C3CF31F00E0716B /* UIButton+WebCache.m in Sources */,
 				1367BC711C3CF31F00E0716B /* SDWebImagePrefetcher.m in Sources */,
 				1367BC6F1C3CF31F00E0716B /* SDWebImageDownloaderOperation.m in Sources */,
@@ -488,6 +507,7 @@
 				13D294C31C3F67C9000E6376 /* DSRoundImageView.m in Sources */,
 				1366CFC11C45168700A6D178 /* RoundElevenDemoViewController.m in Sources */,
 				1367BC7C1C3D04C400E0716B /* RoundImageView.m in Sources */,
+				1332DFE61CEC715700BB1CDB /* HJCornerRadius.m in Sources */,
 				1367BC3F1C3CEEBC00E0716B /* RoundTwoDemoViewController.m in Sources */,
 				1367BC6B1C3CF31F00E0716B /* SDImageCache.m in Sources */,
 				1367BBF91C3CE9BC00E0716B /* main.m in Sources */,
