@@ -43,6 +43,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         for (int i=1; i<=total; i++) {
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kHeight * (i-1), 2, kHeight, kHeight)];
+            imageView.layer.masksToBounds = NO;
             imageView.tag = i;
             [cell.contentView addSubview:imageView];
         }
